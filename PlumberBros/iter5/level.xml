@@ -1,0 +1,1184 @@
+<cartoonistGameXML version="1" involvesScore="false" involvesLives="false" randomSeed="8963842" playerName="princess" inputImg="keyboard" input="the arrow keys and space bar" playerSprite="" winText="Increase the size of princess." loseText="When time runs out." recipes="Win: Increase the size of princess.&#xA;&#xA;Lose: When time runs out.&#xA;" gameTitle="The turtles Game" gameByline="Game-O-Matic" gameWebsite="http://www.game-o-matic.com/" gameDescription="null" gameCustomWin="You Win!" gameCustomLose="You Lose..." gameConclusion="Having played this game, there is something you may have learned." conceptMapSummary="A game where plumber eats mushrooms, plumber kills turtles, plumber collects coins, plumber saves princess and turtles kills plumber.">
+  <group name="generatedGame">
+    <objectReference name="plumber"/>
+    <objectReference name="turtles"/>
+    <objectReference name="princess"/>
+    <objectReference name="coins"/>
+    <objectReference name="World-gom-xygisofjd"/>
+    <objectReference name="mushrooms"/>
+  </group>
+  <entity name="plumber" alias="plumber">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>200</x>
+        <y>0</y>
+      </position>
+      <size>
+        <x>62.917816676199436</x>
+        <y>62.917816676199436</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>mushrooms</_0>
+        <_1>turtles</_1>
+        <_2>gom-wall</_2>
+        <_3>princess</_3>
+        <_4>coins</_4>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>plumber</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="CartoonistEngine.ShapeRenderer" name="ShapeRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <red>53</red>
+      <green>180</green>
+      <blue>249</blue>
+    </component>
+    <component type="CartoonistEngine.TextLabelRenderer" name="TextLabelRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <labelText>plumber</labelText>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/blank.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="GrowComponent0" verb="eats" specific="absorbSize" unfulfilled="null" type="CartoonistEngine.GrowComponent">
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <scaleWithoutCollision/>
+      <growOrShrink>grow</growOrShrink>
+      <growTimer>47.43911582045257</growTimer>
+      <minShrinkScale>0.32857853290624917</minShrinkScale>
+      <maxGrowScale>2.4950876203365624</maxGrowScale>
+      <growScaleDelta>0.3</growScaleDelta>
+      <scaleOtherEntityName/>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>mushrooms</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="NamedHealthComponent" verb="" specific="" unfulfilled="null" recipe="asteroids" nonTerminal="_isVulnerable" type="CartoonistEngine.HealthComponent">
+      <healthMinValue>0</healthMinValue>
+      <healthMaxValue>49.373452614527196</healthMaxValue>
+      <damageAmount>6.615252902265638</damageAmount>
+      <destroyOnMinHealth>true</destroyOnMinHealth>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>turtles</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="IntervalSpawnerControllerComponent0" verb="" specific="" unfulfilled="null" recipe="asteroids" nonTerminal="_shootsAt" type="CartoonistEngine.IntervalSpawnerControllerComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <decrementOnSpawn>false</decrementOnSpawn>
+      <spawnType>turtles-shoots-plumber</spawnType>
+      <min_freq>109.99823552090675</min_freq>
+      <max_freq>130.3566436516121</max_freq>
+      <shotSpeed>107.59512297809124</shotSpeed>
+      <meterEventID/>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.8862300993315876</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+    <component name="AdvanceOnTimerComponent0" verb="" specific="" unfulfilled="null" recipe="everything moves" nonTerminal="_movesInAnyWay" type="CartoonistEngine.AdvanceOnTimerComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <accelerationX>12.665943338535726</accelerationX>
+      <accelerationY>6.961105936206877</accelerationY>
+      <minAcceleration>5</minAcceleration>
+      <timeInSecs>0.47748495172709227</timeInSecs>
+    </component>
+    <component name="ZOrderBySizeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-zordersize" type="CartoonistEngine.ZOrderBySizeComponent"/>
+  </entity>
+  <entity name="turtles" alias="turtles">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>124.69796037174672</x>
+        <y>156.36629649360597</y>
+      </position>
+      <size>
+        <x>62.917816676199436</x>
+        <y>62.917816676199436</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>plumber</_0>
+        <_1>turtles-shoots-plumber</_1>
+        <_2>gom-wall</_2>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>turtles</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="CartoonistEngine.ShapeRenderer" name="ShapeRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <red>80</red>
+      <green>219</green>
+      <blue>89</blue>
+    </component>
+    <component type="CartoonistEngine.TextLabelRenderer" name="TextLabelRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <labelText>turtles</labelText>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/blank.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="CloneOnCollideComponent0" verb="" specific="" unfulfilled="null" recipe="asteroids" type="CartoonistEngine.CloneOnCollideComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <spawnType>turtles</spawnType>
+      <timeBetweenSpawns>1.0504644676111639</timeBetweenSpawns>
+      <maxSpawnCount>24</maxSpawnCount>
+      <numberToSpawn>2.6805168529972434</numberToSpawn>
+      <destroyAfterClone>true</destroyAfterClone>
+      <minShrinkSize>20</minShrinkSize>
+      <destroyOnMinShrink>true</destroyOnMinShrink>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>turtles-shoots-plumber</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.8869866312202066</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+    <component name="WanderMovementComponent0" verb="" specific="" unfulfilled="null" recipe="everything moves" nonTerminal="_movesInAnyWay" type="CartoonistEngine.WanderMovementComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <showRotation>false</showRotation>
+      <speed>11.333071768283844</speed>
+      <minDist>264.9510019412264</minDist>
+      <maxDist>284.6074268454686</maxDist>
+      <angSpeed>4.454763976857066</angSpeed>
+      <minRotation>39.09430944826454</minRotation>
+      <maxRotation>36.740634923335165</maxRotation>
+    </component>
+    <component name="ZOrderBySizeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-zordersize" type="CartoonistEngine.ZOrderBySizeComponent"/>
+  </entity>
+  <template name="gom-wall" alias="gom-wall">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <x>31.458908338099718</x>
+        <y>31.458908338099718</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>false</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>plumber</_0>
+        <_1>turtles</_1>
+        <_2>princess</_2>
+        <_3>coins</_3>
+        <_4>mushrooms</_4>
+        <_5>turtles-shoots-plumber</_5>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>gom-wall</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/gom-wall.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="InanimateObjectComponent0" verb="" specific="" unfulfilled="null" type="CartoonistEngine.InanimateObjectComponent"/>
+    <component name="MakeSolidComponent0" verb="auto-solid" specific="" unfulfilled="null" type="CartoonistEngine.MakeSolidComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <collideWithAllTypes>true</collideWithAllTypes>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>plumber</type>
+        </_0>
+        <_1>
+          <type>turtles</type>
+        </_1>
+        <_2>
+          <type>princess</type>
+        </_2>
+        <_3>
+          <type>coins</type>
+        </_3>
+        <_4>
+          <type>mushrooms</type>
+        </_4>
+        <_5>
+          <type>turtles-shoots-plumber</type>
+        </_5>
+        <_6>
+          <type>plumber</type>
+        </_6>
+        <_7>
+          <type>turtles</type>
+        </_7>
+        <_8>
+          <type>princess</type>
+        </_8>
+        <_9>
+          <type>coins</type>
+        </_9>
+        <_10>
+          <type>mushrooms</type>
+        </_10>
+        <_11>
+          <type>turtles-shoots-plumber</type>
+        </_11>
+      </collisionSounds>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.9291558140795678</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+  </template>
+  <entity name="princess" alias="princess">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <x>62.917816676199436</x>
+        <y>62.917816676199436</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>gom-wall</_0>
+        <_1>plumber</_1>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>princess</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="CartoonistEngine.ShapeRenderer" name="ShapeRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <red>174</red>
+      <green>70</green>
+      <blue>7</blue>
+    </component>
+    <component type="CartoonistEngine.TextLabelRenderer" name="TextLabelRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <labelText>princess</labelText>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/blank.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="ShrinkComponent0" verb="saves" specific="rescueFromShrinking" unfulfilled="null" type="CartoonistEngine.ShrinkComponent">
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <scaleWithoutCollision>true</scaleWithoutCollision>
+      <growOrShrink>shrink</growOrShrink>
+      <growTimer>53.813653932884336</growTimer>
+      <minShrinkScale>0.1</minShrinkScale>
+      <maxGrowScale>1.1322046810761095</maxGrowScale>
+      <growScaleDelta>0.3</growScaleDelta>
+      <scaleOtherEntityName/>
+      <destroyOnMinShrink>true</destroyOnMinShrink>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair"/>
+    </component>
+    <component name="NamedGrowComponent" verb="saves" specific="rescueFromShrinking" unfulfilled="null" type="CartoonistEngine.GrowComponent">
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <scaleWithoutCollision/>
+      <growOrShrink>grow</growOrShrink>
+      <growTimer>28.314008470624685</growTimer>
+      <minShrinkScale>0.3781669557793066</minShrinkScale>
+      <maxGrowScale>3.72333353292197</maxGrowScale>
+      <growScaleDelta>0.6</growScaleDelta>
+      <scaleOtherEntityName/>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>plumber</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="RespawnOnRemoveComponent0" verb="" specific="" unfulfilled="null" recipe="Inflate to Win" type="CartoonistEngine.RespawnOnRemoveComponent">
+      <spawnPos>random</spawnPos>
+      <spawnRegionLeft>-123.70301414048299</spawnRegionLeft>
+      <spawnRegionRight>235.9765028813854</spawnRegionRight>
+      <spawnRegionTop>-218.79869466647506</spawnRegionTop>
+      <spawnRegionBottom>115.91267923358828</spawnRegionBottom>
+      <respawnIfLessThanEntityCount>10</respawnIfLessThanEntityCount>
+      <spawnWithNoOverlap>true</spawnWithNoOverlap>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.9013822992984206</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="DriveWithArrowsComponent0" verb="Auto-PlayerMove" specific="" unfulfilled="null" type="CartoonistEngine.DriveWithArrowsComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <acceleration>14.296621849760413</acceleration>
+      <turnSpeed>0.11030323407612741</turnSpeed>
+      <fuelRate>1648.6466354690492</fuelRate>
+      <allowReverse>true</allowReverse>
+      <jetMode>true</jetMode>
+      <fuelMeterDecTime>0.38383336551487446</fuelMeterDecTime>
+      <meterEventID/>
+    </component>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+    <component name="ZOrderBySizeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-zordersize" type="CartoonistEngine.ZOrderBySizeComponent"/>
+  </entity>
+  <entity name="coins" alias="coins">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>-180.19377358048382</x>
+        <y>86.77674782351164</y>
+      </position>
+      <size>
+        <x>62.917816676199436</x>
+        <y>62.917816676199436</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>gom-wall</_0>
+        <_1>plumber</_1>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>coins</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="CartoonistEngine.ShapeRenderer" name="ShapeRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <red>188</red>
+      <green>190</green>
+      <blue>84</blue>
+    </component>
+    <component type="CartoonistEngine.TextLabelRenderer" name="TextLabelRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <labelText>coins</labelText>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/blank.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="RemoveOnCollideComponent0" verb="collects" specific="removes" unfulfilled="null" type="CartoonistEngine.RemoveOnCollideComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <invulnSeconds>1.808522178977728</invulnSeconds>
+      <winOnRemove>false</winOnRemove>
+      <loseOnRemove>false</loseOnRemove>
+      <meterIncOnRemove>false</meterIncOnRemove>
+      <meterDecOnRemove>false</meterDecOnRemove>
+      <meterEventID/>
+      <playExplosion>true</playExplosion>
+      <doNotRespawn>false</doNotRespawn>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>plumber</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.9039435088075698</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+    <component name="WanderMovementComponent0" verb="" specific="" unfulfilled="null" recipe="everything moves" nonTerminal="_movesInAnyWay" type="CartoonistEngine.WanderMovementComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <showRotation>false</showRotation>
+      <speed>13.677260365337133</speed>
+      <minDist>396.08297697268426</minDist>
+      <maxDist>311.8546299636364</maxDist>
+      <angSpeed>3.0800970382988453</angSpeed>
+      <minRotation>11.042715683579445</minRotation>
+      <maxRotation>80.3172672749497</maxRotation>
+    </component>
+    <component name="ZOrderBySizeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-zordersize" type="CartoonistEngine.ZOrderBySizeComponent"/>
+  </entity>
+  <entity name="World-gom-xygisofjd" alias="World-gom-xygisofjd">
+    <component name="WorldObjectComponent0" verb="" specific="" unfulfilled="null" type="CartoonistEngine.WorldObjectComponent"/>
+    <component name="GlobalEntityZOrderComponent0" verb="" specific="" unfulfilled="null" type="CartoonistEngine.GlobalEntityZOrderComponent"/>
+    <component name="InanimateObjectComponent0" verb="" specific="" unfulfilled="null" type="CartoonistEngine.InanimateObjectComponent"/>
+    <component name="SpawnGridComponent0" verb="" specific="" unfulfilled="null" recipe="asteroids" type="CartoonistEngine.SpawnGridComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <gridCenterX>31.324437633156776</gridCenterX>
+      <gridCenterY>76.08004659414291</gridCenterY>
+      <spacingX>160.26711120270193</spacingX>
+      <spacingY>207.90870098397136</spacingY>
+      <spawnCountX>1.6133201234042645</spawnCountX>
+      <spawnCountY>1.621611018665135</spawnCountY>
+      <chanceOfGridPositionBeingFilled>0.8368643193971366</chanceOfGridPositionBeingFilled>
+      <spawnType>turtles</spawnType>
+      <spawnInScreen>true</spawnInScreen>
+      <spawnWithNoOverlap>false</spawnWithNoOverlap>
+      <spawnInRandomPosition>true</spawnInRandomPosition>
+    </component>
+    <component name="MeterComponent0" verb="" specific="" unfulfilled="null" recipe="Inflate to Win" type="CartoonistEngine.MeterComponent">
+      <nameLabel>princess's Size (fill to win)</nameLabel>
+      <minValue>0</minValue>
+      <maxValue>75</maxValue>
+      <value>0</value>
+      <changeAmount>822.1066850237548</changeAmount>
+      <changeOnTickFlag>false</changeOnTickFlag>
+      <disableOnMax>false</disableOnMax>
+      <disableOnMin>false</disableOnMin>
+      <enableOnMax>false</enableOnMax>
+      <enableOnMin>false</enableOnMin>
+      <enableOnNotMin>false</enableOnNotMin>
+      <disableOnNotMax>false</disableOnNotMax>
+      <enableOnNotMax>false</enableOnNotMax>
+      <disableOnNotMin>false</disableOnNotMin>
+      <enableComponentType>_allComponents</enableComponentType>
+      <winOnMax>true</winOnMax>
+      <winOnMin>false</winOnMin>
+      <loseOnMax>false</loseOnMax>
+      <loseOnMin>false</loseOnMin>
+      <entityToToggleActivation/>
+      <linkedEntityName>princess</linkedEntityName>
+      <linkedEntityProperty>@Spatial.size.x</linkedEntityProperty>
+      <linkedEntityMaxProperty>@NamedGrowComponent.maxGrowSize</linkedEntityMaxProperty>
+      <linkedEntityMinProperty>@NamedGrowComponent.minShrinkSize</linkedEntityMinProperty>
+      <eventID/>
+    </component>
+    <component name="MeterComponent1" verb="" specific="" unfulfilled="null" recipe="Run out of time" type="CartoonistEngine.MeterComponent">
+      <nameLabel>Time Left:</nameLabel>
+      <minValue>0</minValue>
+      <maxValue>42</maxValue>
+      <value>42</value>
+      <changeAmount>-1</changeAmount>
+      <changeOnTickFlag>true</changeOnTickFlag>
+      <disableOnMax>false</disableOnMax>
+      <disableOnMin>false</disableOnMin>
+      <enableOnMax>false</enableOnMax>
+      <enableOnMin>false</enableOnMin>
+      <enableOnNotMin>false</enableOnNotMin>
+      <disableOnNotMax>false</disableOnNotMax>
+      <enableOnNotMax>false</enableOnNotMax>
+      <disableOnNotMin>false</disableOnNotMin>
+      <enableComponentType>_allComponents</enableComponentType>
+      <winOnMax>false</winOnMax>
+      <winOnMin>false</winOnMin>
+      <loseOnMax>false</loseOnMax>
+      <loseOnMin>true</loseOnMin>
+      <entityToToggleActivation/>
+      <linkedEntityName/>
+      <linkedEntityProperty/>
+      <linkedEntityMaxProperty/>
+      <linkedEntityMinProperty/>
+      <eventID/>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="MeterComponent2" verb="" specific="" unfulfilled="null" recipe="add health meters" type="CartoonistEngine.MeterComponent">
+      <nameLabel>plumber's Health:</nameLabel>
+      <minValue>61.88746616244316</minValue>
+      <maxValue>180.0678377263248</maxValue>
+      <value>23.938455618917942</value>
+      <changeAmount>601.4137859456241</changeAmount>
+      <changeOnTickFlag>false</changeOnTickFlag>
+      <disableOnMax>false</disableOnMax>
+      <disableOnMin>false</disableOnMin>
+      <enableOnMax>false</enableOnMax>
+      <enableOnMin>false</enableOnMin>
+      <enableOnNotMin>false</enableOnNotMin>
+      <disableOnNotMax>false</disableOnNotMax>
+      <enableOnNotMax>false</enableOnNotMax>
+      <disableOnNotMin>false</disableOnNotMin>
+      <enableComponentType>_allComponents</enableComponentType>
+      <winOnMax>false</winOnMax>
+      <winOnMin>false</winOnMin>
+      <loseOnMax>false</loseOnMax>
+      <loseOnMin>false</loseOnMin>
+      <entityToToggleActivation/>
+      <linkedEntityName>plumber</linkedEntityName>
+      <linkedEntityProperty>@NamedHealthComponent.healthValue</linkedEntityProperty>
+      <linkedEntityMaxProperty>@NamedHealthComponent.healthMaxValue</linkedEntityMaxProperty>
+      <linkedEntityMinProperty>@NamedHealthComponent.healthMinValue</linkedEntityMinProperty>
+      <eventID/>
+    </component>
+  </entity>
+  <entity name="mushrooms" alias="mushrooms">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>-44.50418679126292</x>
+        <y>-194.98558243636472</y>
+      </position>
+      <size>
+        <x>62.917816676199436</x>
+        <y>62.917816676199436</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>plumber</_0>
+        <_1>gom-wall</_1>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>mushrooms</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="CartoonistEngine.ShapeRenderer" name="ShapeRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <red>255</red>
+      <green>116</green>
+      <blue>254</blue>
+    </component>
+    <component type="CartoonistEngine.TextLabelRenderer" name="TextLabelRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <labelText>mushrooms</labelText>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/blank.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="ShrinkComponent0" verb="eats" specific="absorbSize" unfulfilled="null" type="CartoonistEngine.ShrinkComponent">
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <scaleWithoutCollision>false</scaleWithoutCollision>
+      <growOrShrink>shrink</growOrShrink>
+      <growTimer>39.86078992486</growTimer>
+      <minShrinkScale>0.1</minShrinkScale>
+      <maxGrowScale>1.0673055425286293</maxGrowScale>
+      <growScaleDelta>0.3</growScaleDelta>
+      <scaleOtherEntityName/>
+      <destroyOnMinShrink>true</destroyOnMinShrink>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>plumber</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="FrictionComponent0" verb="" specific="" unfulfilled="null" recipe="auto-friction" type="CartoonistEngine.FrictionComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <friction>0.9298348378948867</friction>
+      <frictionX>1</frictionX>
+      <frictionY>1</frictionY>
+    </component>
+    <component name="GravityComponent0" verb="" specific="" unfulfilled="null" recipe="auto-gravity" type="CartoonistEngine.GravityComponent">
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <positionProperty>@Spatial.position</positionProperty>
+      <acceleration>0</acceleration>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+    <component name="WanderMovementComponent0" verb="" specific="" unfulfilled="null" recipe="everything moves" nonTerminal="_movesInAnyWay" type="CartoonistEngine.WanderMovementComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <showRotation>true</showRotation>
+      <speed>13.88982307817787</speed>
+      <minDist>193.2582109235227</minDist>
+      <maxDist>477.0259993849322</maxDist>
+      <angSpeed>5.13231844175607</angSpeed>
+      <minRotation>109.38673117663711</minRotation>
+      <maxRotation>142.10901182843372</maxRotation>
+    </component>
+    <component name="ZOrderBySizeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-zordersize" type="CartoonistEngine.ZOrderBySizeComponent"/>
+  </entity>
+  <template name="turtles-shoots-plumber" alias="turtles-shoots-plumber">
+    <component type="com.pblabs.animation.AnimatorComponent" name="SpriteAnimatorComponent">
+      <animations childType="com.pblabs.animation.Animator">
+        <idle type="">
+          <animationType>NO_ANIMATION</animationType>
+          <duration>1</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">0</targetValue>
+        </idle>
+        <explode type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </explode>
+        <spawn type="">
+          <animationType>PLAY_ANIMATION_ONCE</animationType>
+          <duration>0.5</duration>
+          <repeatCount>-1</repeatCount>
+          <startValue type="int">0</startValue>
+          <targetValue type="int">3</targetValue>
+        </spawn>
+      </animations>
+      <defaultAnimation>idle</defaultAnimation>
+      <reference>@SpriteSheetRenderer.spriteIndex</reference>
+    </component>
+    <component type="CartoonistEngine.RotateFlipSpriteSheetRenderer" name="SpriteSheetRenderer">
+      <scene componentReference="SceneDB"/>
+      <positionProperty>@Spatial.position</positionProperty>
+      <velocityProperty>@Spatial.linearVelocity</velocityProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+      <rotationProperty>@Spatial.rotation</rotationProperty>
+      <spriteSheet componentName="spritesDefault"/>
+      <zIndex>1</zIndex>
+      <alpha>1</alpha>
+      <spriteIndex>0</spriteIndex>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesExplode">
+      <image filename="assets/anim-explode-3.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesSpawn">
+      <image filename="assets/anim-spawn-1.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>4</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component type="com.pblabs.box2D.Box2DSpatialComponent" name="Spatial">
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <x>15</x>
+        <y>15</y>
+      </size>
+      <spatialManager componentReference="SceneDB"/>
+      <canRotate>true</canRotate>
+      <canSleep>false</canSleep>
+      <collidesWithTypes childType="String">
+        <_0>turtles</_0>
+        <_1>gom-wall</_1>
+      </collidesWithTypes>
+      <collisionType childType="String">
+        <_0>turtles-shoots-plumber</_0>
+      </collisionType>
+      <collisionShapes childType="com.pblabs.box2D.CollisionShape">
+        <_0 type="CartoonistEngine.SimpleCollisionShape">
+          <isTrigger>true</isTrigger>
+        </_0>
+      </collisionShapes>
+    </component>
+    <component type="com.pblabs.rendering2D.spritesheet.SpriteSheetComponent" name="spritesDefault">
+      <image filename="assets/projectile.png"/>
+      <divider type="com.pblabs.rendering2D.spritesheet.CellCountDivider">
+        <xCount>1</xCount>
+        <yCount>1</yCount>
+      </divider>
+    </component>
+    <component name="MakeProjectileComponent0" verb="" specific="" unfulfilled="null" recipe="asteroids" type="CartoonistEngine.MakeProjectileComponent"/>
+    <component name="InanimateObjectComponent0" verb="" specific="" unfulfilled="null" type="CartoonistEngine.InanimateObjectComponent"/>
+    <component name="SelfDestructAfterTimeComponent0" verb="auto-projectile" specific="" unfulfilled="null" type="CartoonistEngine.SelfDestructAfterTimeComponent">
+      <lifeTime>0.8171954459976405</lifeTime>
+    </component>
+    <component name="RemoveOnCollideComponent0" verb="auto-projectile" specific="" unfulfilled="null" type="CartoonistEngine.RemoveOnCollideComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <invulnSeconds>0</invulnSeconds>
+      <winOnRemove>false</winOnRemove>
+      <loseOnRemove>false</loseOnRemove>
+      <meterIncOnRemove>false</meterIncOnRemove>
+      <meterDecOnRemove>false</meterDecOnRemove>
+      <meterEventID/>
+      <playExplosion>true</playExplosion>
+      <doNotRespawn>false</doNotRespawn>
+      <collisionSounds childType="CartoonistEngine.SoundTypePair">
+        <_0>
+          <type>gom-wall</type>
+        </_0>
+      </collisionSounds>
+    </component>
+    <component name="FadeComponent0" verb="" specific="" unfulfilled="null" recipe="auto-fade" type="CartoonistEngine.FadeComponent">
+      <secsToFadeIn>0.2</secsToFadeIn>
+      <temporaryFadeEnabled>false</temporaryFadeEnabled>
+      <blinkEnabled>false</blinkEnabled>
+    </component>
+    <component name="EntityStateComponent0" verb="" specific="" unfulfilled="null" recipe="auto-state" type="CartoonistEngine.EntityStateComponent"/>
+    <component name="SafeDestroyerComponent0" verb="" specific="" unfulfilled="null" recipe="auto-destroyer" type="CartoonistEngine.SafeDestroyerComponent"/>
+    <component name="EdgeWrapComponent0" verb="auto-keepOnScreen" specific="" unfulfilled="null" type="CartoonistEngine.EdgeWrapComponent">
+      <positionProperty>@Spatial.position</positionProperty>
+      <sizeProperty>@Spatial.size</sizeProperty>
+    </component>
+  </template>
+</cartoonistGameXML>

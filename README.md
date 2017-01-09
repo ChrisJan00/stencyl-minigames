@@ -12,3 +12,13 @@ Game List:
   *  Into the afterlife
   *  Obedience is the road to happiness
   *  DuneBite
+
+
+Update 9/Jan/2017:
+
+  Added some more non-Stencyl minigames:
+
+  *  Traitor Soldier (Tululoo)
+  *  The Minimalistic Graveyard (Tululoo)
+  *  Zombie Pusher (Tululoo)
+  *  Eight Interpretations of Plumber Brothers (Game-o-matic)
